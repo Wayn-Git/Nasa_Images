@@ -1,14 +1,15 @@
-import { useState } from 'react'
 import './App.css'
-import Nasa from './Nasa_Image.jsx'
+import Nasa from "./NasaMain.jsx";
+
+
 
 function App() {
 
   return (
     <>
 
-    <Nasa></Nasa>
-    
+<Nasa></Nasa>
+
     </>
   )
 }

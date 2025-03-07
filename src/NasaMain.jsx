@@ -1,42 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import nasaLogo from "./assets/nasaLogo.svg";
+
 
 export default function Nasa() {
-  // Define state variables for our API data, loading status, and error messages.
-  const [data, setData] = useState(null); // Will hold the NASA APOD data.
-  const [loading, setLoading] = useState(true); // Starts as true until data is fetched.
-  const [error, setError] = useState(null); // Stores any error message.
+  // State variables for storing data, loading state, and any errors.
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // useEffect runs once when the component mounts.
   useEffect(() => {
-    // Fetch data from the NASA API.
     fetch('https://api.nasa.gov/planetary/apod?api_key=dhiQLm9oIfQfnCaefEJgXYamze6E9tXi2zZa1SOR')
       .then(response => {
-        // Check if the response is successful.
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        // Convert the response into JSON.
-        return response.json();
+        return response.json(); // Convert the response into JSON.
       })
       .then(result => {
-        // Save the data into our state and mark loading as finished.
-        setData(result);
-        setLoading(false);
+        setData(result);   // Save the fetched data.
+        setLoading(false); // Data is loaded.
       })
       .catch(err => {
-        // If there’s an error, log it and update our error state.
         console.error(err);
         setError('Failed to fetch NASA data. Please try again later.');
         setLoading(false);
       });
-  }, []); // Empty array means this runs only once.
+  }, []);
 
-  // If the app is still loading data, show a loading screen.
+  // If data is still loading, display a loading screen.
   if (loading) {
     return (
       <div className="bg-black min-h-screen flex flex-col items-center justify-center">
         <img
-          src="src\Nasa_Logo_Loading.svg"
+          // Use the imported nasaLogo image.
+          src={nasaLogo}
           alt="NASA Logo Loading"
           className="w-32 h-32 animate-pulse"
         />
@@ -45,7 +43,7 @@ export default function Nasa() {
     );
   }
 
-  // If an error occurred, show an error message with a "Try Again" button.
+  // If an error occurred, display an error message with a "Try Again" button.
   if (error) {
     return (
       <div className="bg-black min-h-screen flex items-center justify-center text-white">
@@ -63,7 +61,7 @@ export default function Nasa() {
     );
   }
 
-  // Determine if the media is a video or an image.
+  // Check if the media type is a video.
   const isVideo = data?.media_type === 'video';
 
   // Main content rendering.
@@ -74,9 +72,9 @@ export default function Nasa() {
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img 
-              src="src\Nasa_Logo_Loading.svg" 
-              alt="NASA Logo" 
-              className="h-10 w-10" 
+              src={nasaLogo} // Use the imported NASA logo image.
+              alt="NASA Logo"
+              className="h-10 w-10"
             />
             <h1 className="text-xl font-bold m-2">Astronomy Picture of the Day</h1>
           </div>
@@ -88,7 +86,6 @@ export default function Nasa() {
 
       {/* Main Content Area */}
       <main className="max-w-4xl mx-auto p-4 md:p-6">
-        {/* Title of the image/video */}
         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-blue-300 text-center">
           {data.title}
         </h2>
@@ -96,18 +93,17 @@ export default function Nasa() {
         {/* Media Display Section */}
         <div className="bg-gray-800 bg-opacity-60 p-2 rounded-lg shadow-2xl overflow-hidden mb-6">
           {isVideo ? (
-            // If the data is a video, use an iframe to embed it.
             <div className="aspect-video rounded overflow-hidden">
               <iframe
                 src={data.url}
                 title={data.title}
                 className="w-full h-full"
                 frameBorder="0"
+                style={{ border: 0 }}
                 allowFullScreen
               ></iframe>
             </div>
           ) : (
-            // If the data is an image, display it and allow users to click to view the high-res version.
             <img
               src={data.url}
               alt={data.title}
