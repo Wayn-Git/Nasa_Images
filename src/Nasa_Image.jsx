@@ -36,7 +36,7 @@ export default function Nasa() {
     return (
       <div className="bg-black min-h-screen flex flex-col items-center justify-center">
         <img
-          src="src/assets/Nasa_Logo_Loading.svg"
+          src="src\assets\Nasa_Logo_Loading.svg"
           alt="NASA Logo Loading"
           className="w-32 h-32 animate-pulse"
         />
