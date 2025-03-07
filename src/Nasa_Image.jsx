@@ -36,7 +36,7 @@ export default function Nasa() {
     return (
       <div className="bg-black min-h-screen flex flex-col items-center justify-center">
         <img
-          src="public\/Nasa_Logo_Loading.svg"
+          src="src\Nasa_Logo_Loading.svg"
           alt="NASA Logo Loading"
           className="w-32 h-32 animate-pulse"
         />
@@ -74,7 +74,7 @@ export default function Nasa() {
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img 
-              src="public\/Nasa_Logo_Loading.svg" 
+              src="src\Nasa_Logo_Loading.svg" 
               alt="NASA Logo" 
               className="h-10 w-10" 
             />
