@@ -181,17 +181,17 @@ export default function EarthViewer() {
     <div className="min-h-screen bg-gradient-to-b from-blue-900 to-black text-white animate-fadeIn">
       {/* Header */}
       <header className="sticky top-0 bg-black bg-opacity-80 backdrop-blur-md p-4 z-10">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-3">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center">
+          <div className="flex items-center space-x-3 mb-2 sm:mb-0">
             <img 
               src="/Nasa_Logo_Loading.svg" 
               alt="NASA Logo" 
-              className="h-10 w-10" 
+              className="h-8 w-8 sm:h-10 sm:w-10" 
             />
-            <h1 className="text-xl font-bold m-2">Earth from Space</h1>
+            <h1 className="text-lg sm:text-xl font-bold">Earth from Space</h1>
           </div>
-          <div className="flex items-center space-x-3">
-            <a href="/" className="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded-md transition-colors">
+          <div className="flex items-center">
+            <a href="/" className="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded-md transition-colors text-sm sm:text-base">
               Back to APOD
             </a>
           </div>
@@ -199,21 +199,21 @@ export default function EarthViewer() {
       </header>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto p-4 md:p-6">
+      <div className="max-w-6xl mx-auto p-3 md:p-6">
         {/* Controls */}
-        <div className="bg-gray-800 bg-opacity-60 p-4 rounded-lg mb-6">
+        <div className="bg-gray-800 bg-opacity-60 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h2 className="text-xl font-bold mb-3">EPIC: Earth Polychromatic Imaging Camera</h2>
-              <p className="text-gray-300">Daily imagery of Earth from NASA's DSCOVR satellite</p>
+              <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">EPIC: Earth Polychromatic Imaging Camera</h2>
+              <p className="text-sm sm:text-base text-gray-300">Daily imagery of Earth from NASA's DSCOVR satellite</p>
             </div>
-            <div>
-              <label htmlFor="date-select" className="block mb-2">Select Date:</label>
+            <div className="w-full md:w-auto">
+              <label htmlFor="date-select" className="block mb-2 text-sm sm:text-base">Select Date:</label>
               <select 
                 id="date-select"
                 value={selectedDate}
                 onChange={handleDateChange}
-                className="bg-gray-700 border border-gray-600 rounded px-3 py-2 text-white w-full"
+                className="bg-gray-700 border border-gray-600 rounded px-3 py-2 text-white w-full text-sm sm:text-base"
               >
                 {availableDates.map(date => (
                   <option key={date} value={date}>
@@ -229,68 +229,68 @@ export default function EarthViewer() {
         {epicData.length > 0 ? (
           <div className="bg-gray-800 bg-opacity-60 rounded-lg overflow-hidden">
             <div className="relative">
-              <div className="flex justify-center bg-black min-h-[50vh]">
+              <div className="flex justify-center bg-black min-h-[30vh] sm:min-h-[50vh]">
                 {isImageLoading && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
                   </div>
                 )}
                 <img 
                   ref={mainImageRef}
                   src={getImageUrl(activeImage)}
                   alt="Earth from Space" 
-                  className={`max-h-[70vh] object-contain transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
+                  className={`max-h-[50vh] sm:max-h-[70vh] object-contain transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
                   onLoad={handleImageLoad}
                 />
               </div>
               
               {/* Image navigation controls */}
-              <div className="absolute inset-0 flex items-center justify-between px-4">
+              <div className="absolute inset-0 flex items-center justify-between px-2 sm:px-4">
                 <button 
                   onClick={goToPrevImage}
-                  className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-70 transition-colors"
+                  className="p-1 sm:p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-70 transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 <button 
                   onClick={goToNextImage}
-                  className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-70 transition-colors"
+                  className="p-1 sm:p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-70 transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
               </div>
               
               {/* Image counter */}
-              <div className="absolute bottom-4 right-4 bg-black bg-opacity-70 px-3 py-1 rounded text-sm">
+              <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 bg-black bg-opacity-70 px-2 py-1 rounded text-xs sm:text-sm">
                 {activeImageIndex + 1} / {epicData.length}
               </div>
             </div>
             
             {/* Image Information - Only show when image is loaded */}
             {!isImageLoading && (
-              <div className="p-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-3 sm:p-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 text-sm">
                   <div>
-                    <h3 className="font-semibold mb-2">Capture Time</h3>
+                    <h3 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Capture Time</h3>
                     <p>{new Date(activeImage.date).toLocaleTimeString()}</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-2">Coordinates</h3>
+                    <h3 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Coordinates</h3>
                     <p>Lat: {activeImage.centroid_coordinates.lat.toFixed(2)}°, Lon: {activeImage.centroid_coordinates.lon.toFixed(2)}°</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-2">Sun Position</h3>
+                    <h3 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Sun Position</h3>
                     <div className="flex space-x-4">
                       <div>
-                        <span className="text-gray-400 text-sm">Azimuth:</span>
+                        <span className="text-gray-400 text-xs sm:text-sm">Azimuth:</span>
                         <p>{activeImage.sun_j2000_position.x.toFixed(2)}</p>
                       </div>
                       <div>
-                        <span className="text-gray-400 text-sm">Elevation:</span>
+                        <span className="text-gray-400 text-xs sm:text-sm">Elevation:</span>
                         <p>{activeImage.sun_j2000_position.y.toFixed(2)}</p>
                       </div>
                     </div>
@@ -300,20 +300,20 @@ export default function EarthViewer() {
             )}
           </div>
         ) : (
-          <div className="bg-gray-800 bg-opacity-60 p-8 rounded-lg text-center">
-            <p className="text-xl">No EPIC images available for {new Date(selectedDate).toLocaleDateString()}</p>
-            <p className="mt-2 text-gray-400">Please select a different date</p>
+          <div className="bg-gray-800 bg-opacity-60 p-4 sm:p-8 rounded-lg text-center">
+            <p className="text-base sm:text-xl">No EPIC images available for {new Date(selectedDate).toLocaleDateString()}</p>
+            <p className="mt-2 text-sm text-gray-400">Please select a different date</p>
           </div>
         )}
         
         {/* Thumbnails - Only load after main image is visible */}
         {showThumbnails && epicData.length > 1 && (
-          <div className="mt-6 transition-opacity duration-300">
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="text-lg font-semibold">Images from {new Date(selectedDate).toLocaleDateString()}</h3>
-              <p className="text-sm text-gray-400">{loadedThumbnails} of {visibleThumbnails.length} loaded</p>
+          <div className="mt-4 sm:mt-6 transition-opacity duration-300">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 sm:mb-3">
+              <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-0">Images from {new Date(selectedDate).toLocaleDateString()}</h3>
+              <p className="text-xs sm:text-sm text-gray-400">{loadedThumbnails} of {visibleThumbnails.length} loaded</p>
             </div>
-            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-1 sm:gap-2">
               {visibleThumbnails.map((image, index) => (
                 <div 
                   key={image.identifier} 
@@ -327,7 +327,7 @@ export default function EarthViewer() {
                   <img 
                     src={getImageUrl(image, true)} 
                     alt={`Earth at ${new Date(image.date).toLocaleTimeString()}`} 
-                    className="w-full h-16 object-cover"
+                    className="w-full h-12 sm:h-16 object-cover"
                     loading="lazy"
                     onLoad={handleThumbnailLoad}
                   />
@@ -335,7 +335,7 @@ export default function EarthViewer() {
               ))}
             </div>
             {epicData.length > 20 && (
-              <p className="text-center mt-3 text-sm text-gray-400">
+              <p className="text-center mt-2 sm:mt-3 text-xs sm:text-sm text-gray-400">
                 Showing 20 of {epicData.length} images
               </p>
             )}
@@ -344,9 +344,9 @@ export default function EarthViewer() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-12 py-6 border-t border-gray-800 text-center text-gray-400">
+      <footer className="mt-8 sm:mt-12 py-4 sm:py-6 border-t border-gray-800 text-center text-gray-400">
         <div className="max-w-6xl mx-auto px-4">
-          <p className="text-sm">
+          <p className="text-xs sm:text-sm">
             Data provided by the{" "}
             <a 
               href="https://epic.gsfc.nasa.gov/" 
