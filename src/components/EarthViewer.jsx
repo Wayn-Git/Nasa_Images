@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useEpicImagery } from '../hooks/useNasaApi';
 
+// Import API key 
+const API_KEY = import.meta.env.VITE_NASA_API_KEY || 'dhiQLm9oIfQfnCaefEJgXYamze6E9tXi2zZa1SOR';
+
 export default function EarthViewer() {
   const [selectedDate, setSelectedDate] = useState('');
   const [availableDates, setAvailableDates] = useState([]);
@@ -8,7 +11,7 @@ export default function EarthViewer() {
   
   // Set initial date when available dates are loaded
   useEffect(() => {
-    fetch('https://api.nasa.gov/EPIC/api/natural/available?api_key=dhiQLm9oIfQfnCaefEJgXYamze6E9tXi2zZa1SOR')
+    fetch(`https://api.nasa.gov/EPIC/api/natural/available?api_key=${API_KEY}`)
       .then(response => response.json())
       .then(dates => {
         setAvailableDates(dates.sort().reverse());
@@ -31,7 +34,7 @@ export default function EarthViewer() {
   const getImageUrl = (image) => {
     if (!image) return '';
     const formattedDate = formatDate(selectedDate);
-    return `https://api.nasa.gov/EPIC/archive/natural/${formattedDate}/png/${image.image}.png?api_key=dhiQLm9oIfQfnCaefEJgXYamze6E9tXi2zZa1SOR`;
+    return `https://api.nasa.gov/EPIC/archive/natural/${formattedDate}/png/${image.image}.png?api_key=${API_KEY}`;
   };
   
   // Handle date change
@@ -92,7 +95,7 @@ export default function EarthViewer() {
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img 
-              src="src/assets/Nasa_Logo_Loading.svg" 
+              src="/Nasa_Logo_Loading.svg" 
               alt="NASA Logo" 
               className="h-10 w-10" 
             />

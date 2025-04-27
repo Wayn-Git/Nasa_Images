@@ -56,7 +56,7 @@ export default function MarsRover() {
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img 
-              src="src/assets/Nasa_Logo_Loading.svg" 
+              src="/Nasa_Logo_Loading.svg" 
               alt="NASA Logo" 
               className="h-10 w-10" 
             />

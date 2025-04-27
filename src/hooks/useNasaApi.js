@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
-const API_KEY = 'dhiQLm9oIfQfnCaefEJgXYamze6E9tXi2zZa1SOR';
+// Use environment variable with fallback
+const API_KEY = import.meta.env.VITE_NASA_API_KEY || 'dhiQLm9oIfQfnCaefEJgXYamze6E9tXi2zZa1SOR';
 
 export function useApod(date) {
   const [data, setData] = useState(null);
