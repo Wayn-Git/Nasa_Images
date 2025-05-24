@@ -1,38 +1,122 @@
 @import "tailwindcss";
 
+:root {
+  --primary-color: #00ffd5;
+  --secondary-color: #ff00ff;
+  --background-dark: #050520;
+  --text-color: #ffffff;
+  --card-bg: rgba(10, 10, 40, 0.2);
+}
+
+body {
+  background: var(--background-dark);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--primary-color);
+}
+
+.neon-text {
+  color: var(--primary-color);
+}
+
+.neon-border {
+  border: 1px solid var(--primary-color);
+}
+
 @layer utilities {
   .animate-fadeIn {
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  .animate-slideIn {
-    animation: slideIn 0.4s ease-out;
-  }
-  
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    animation: fadeIn 0.3s ease-in-out;
   }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes slideIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+
+/* Minimalist UI Elements */
+.cyber-button {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  transition: all 0.2s ease;
+}
+
+.cyber-button:hover {
+  background: var(--primary-color);
+  color: var(--background-dark);
+}
+
+.cyber-input {
+  background: var(--card-bg);
+  border: 1px solid var(--primary-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.cyber-input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+}
+
+/* Grid Layout */
+.cyber-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.cyber-grid-item {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.cyber-grid-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Data Display */
+.cyber-data {
+  background: var(--card-bg);
+  border: 1px solid var(--primary-color);
+  padding: 0.75rem;
+}
+
+.cyber-data-label {
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.cyber-data-value {
+  font-size: 1rem;
+  color: var(--text-color);
 }
