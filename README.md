@@ -1,12 +1,38 @@
-# React + Vite
+# NASA Daily Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Explore the universe—one day at a time.**
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The NASA Daily Web App brings the wonders of space directly to your screen using official data from NASA's APIs. From daily astronomical images to mesmerizing Mars rover captures, this app is your window to the cosmos.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Astronomy Picture of the Day**: Discover a new breathtaking image from space every day
+- **Cosmic Wonders**: Explore fascinating cosmic phenomena and celestial events
+- **Mars Rover Images**: Browse real images taken by NASA's Mars rovers
+- **Earth Views**: See our planet from different perspectives captured by satellites
+
+## API Used
+
+**NASA Open APIs**: Harnessing the power of NASA's public APIs to deliver real-time space data.
+
+## Getting Started
+
+[Add installation and setup instructions here]
+
+## Usage
+
+[Add usage instructions here]
+
+## Technologies Used
+
+[Add your tech stack here]
+
+## Contributing
+
+[Add contribution guidelines here]
+
+## License
+
+[Add license information here]
